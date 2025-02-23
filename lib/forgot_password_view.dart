@@ -37,9 +37,16 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(
+            Image.asset(
+              'assets/logo_gerep.png',
+              height: 100,
+            ),
+            SizedBox(height: 30),
+            TextFormField(
               controller: _emailController,
-              decoration: InputDecoration(labelText: 'Correo Electrónico'),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Ingresa tu usuario o correo electrónico'),
             ),
             if (_errorEmail.isNotEmpty)
               Text(_errorEmail, style: TextStyle(color: Colors.red)),

@@ -43,6 +43,11 @@ class _LoginViewState extends State<LoginView> {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
+            Image.asset(
+              'assets/logo_gerep.png',
+              height: 100,
+            ),
+            SizedBox(height: 30),
             TextField(
               controller: _usuarioController,
               decoration: InputDecoration(labelText: 'Usuario'),

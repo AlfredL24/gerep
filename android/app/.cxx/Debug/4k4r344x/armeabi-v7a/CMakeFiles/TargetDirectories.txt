@@ -1,0 +1,2 @@
+C:/Users/Recursos Materiales/gerep/android/app/.cxx/Debug/4k4r344x/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Recursos Materiales/gerep/android/app/.cxx/Debug/4k4r344x/armeabi-v7a/CMakeFiles/rebuild_cache.dir
