@@ -65,7 +65,8 @@ flutter:
     - assets/splas_screen.png
     - assets/bienvenido.png
     - assets/logo_gerep.png
-  #   - images/a_dot_ham.jpeg
+    - assets/fondologin.png
+  # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
