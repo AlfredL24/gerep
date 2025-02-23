@@ -39,34 +39,61 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Iniciar Sesión')),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _usuarioController,
-              decoration: InputDecoration(labelText: 'Usuario'),
+      body: Stack(
+        children: [
+          // Imagen de fondo que cubre toda la pantalla
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/fondologin.png.png'
+                    ''),
+                fit: BoxFit.cover,
+              ),
             ),
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Contraseña'),
-              obscureText: true,
+          ),
+          // Contenido de la pantalla (cajas de texto con íconos)
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                TextField(
+                  controller: _usuarioController,
+                  decoration: InputDecoration(
+                    labelText: 'Usuario',
+                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 16.0),
+                TextField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    labelText: 'Contraseña',
+                    prefixIcon: Icon(Icons.lock),
+                    border: OutlineInputBorder(),
+                  ),
+                  obscureText: true,
+                ),
+                if (_errorMessage.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text(_errorMessage, style: TextStyle(color: Colors.red)),
+                  ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _login,
+                  child: Text('Iniciar Sesión'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/forgotPassword');
+                  },
+                  child: Text('Olvidé mi contraseña'),
+                ),
+              ],
             ),
-            if (_errorMessage.isNotEmpty)
-              Text(_errorMessage, style: TextStyle(color: Colors.red)),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _login,
-              child: Text('Iniciar Sesión'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/forgotPassword');
-              },
-              child: Text('Olvidé mi contraseña'),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -5,17 +5,17 @@ class WelcomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        fit: StackFit.expand, // Asegura que el Stack ocupe toda la pantalla
+        fit: StackFit.expand,
         children: [
-          // Imagen de fondo que cubre toda la pantalla
+          // Imagen de fondo
           Image.asset(
-            'assets/bienvenido.png', // Asegúrate de declarar este asset en pubspec.yaml
+            'assets/bienvenido.png',
             fit: BoxFit.cover,
           ),
-          // Botón centrado pero desplazado 2 cm hacia abajo (aprox. 75 píxeles)
+
           Center(
             child: Transform.translate(
-              offset: Offset(0, 75), // Aproximadamente 2 cm hacia abajo
+              offset: Offset(0, 75),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue[50], // Fondo azul

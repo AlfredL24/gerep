@@ -64,6 +64,7 @@ flutter:
     - assets/user_credentials.json
     - assets/splas_screen.png
     - assets/bienvenido.png
+    - assets/fondologin.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
