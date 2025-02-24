@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gerep/login_view.dart';
+import 'login_view.dart';
 
 class ResetCredentialsView extends StatefulWidget {
   @override
@@ -15,9 +17,25 @@ class _ResetCredentialsViewState extends State<ResetCredentialsView> {
     // Aquí se simula la actualización en la base de datos.
     // En un caso real, deberás implementar la lógica de actualización.
     setState(() {
+      String newPassword = _newPasswordController.text;
+      String confirmPassword = _confirmPasswordController.text;
+
+      if (newPassword.length < 5) {
+        _message = 'La contraseña debe tener al menos 5 caracteres';
+        return;
+      }
+      if (newPassword != confirmPassword) {
+        _message = 'Las contraseñas no coinciden';
+        return;
+      }
+
       _message = 'Contraseña actualizada correctamente';
     });
-    Navigator.pushReplacementNamed(context, '/mainScreen');
+    //Navigator.pushReplacementNamed(context, '/mainScreen');
+  }
+
+  void _regresarLogin() {
+    Navigator.pushNamed(context, '/login');
   }
 
   @override
@@ -50,11 +68,26 @@ class _ResetCredentialsViewState extends State<ResetCredentialsView> {
               obscureText: true,
             ),
             if (_message.isNotEmpty)
-              Text(_message, style: TextStyle(color: Colors.green)),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Text(
+                  _message,
+                  style: TextStyle(
+                    color: _message.contains('correctamente')
+                        ? Colors.green
+                        : Colors.red,
+                  ),
+                ),
+              ),
             SizedBox(height: 30),
             ElevatedButton(
               onPressed: _updateCredentials,
               child: Text('Cambiar contraseña'),
+            ),
+            SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: _regresarLogin,
+              child: Text('Regresar al inicio de sesión'),
             ),
           ],
         ),

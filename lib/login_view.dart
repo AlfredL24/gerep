@@ -45,7 +45,7 @@ class _LoginViewState extends State<LoginView> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/fondologin.png.png'
+                image: AssetImage('assets/fondologin.png'
                     ''),
                 fit: BoxFit.cover,
               ),
