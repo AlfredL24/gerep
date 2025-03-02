@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gerep/modulo_usuarios.dart';
 import 'welcome_view.dart';
 import 'login_view.dart';
 import 'forgot_password_view.dart';
 import 'reset_credentials_view.dart';
 import 'main_screen_view.dart';
 import 'splash_screen.dart';
+import 'modulo_usuarios.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/forgotPassword': (context) => ForgotPasswordView(),
         '/resetCredentials': (context) => ResetCredentialsView(),
         '/mainScreen': (context) => MainScreenView(),
+        '/moduloUsuarios': (context) => ModuloUsuarios(),
       },
     );
   }

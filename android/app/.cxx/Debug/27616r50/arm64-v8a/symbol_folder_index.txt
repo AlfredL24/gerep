@@ -1,0 +1,1 @@
+C:\Users\Recursos Materiales\Flutter_projects\gerep\build\app\intermediates\cxx\Debug\27616r50\obj\arm64-v8a
