@@ -25,7 +25,7 @@ class _ModuloUsuariosState extends State<ModuloUsuarios> {
     if (value == null || value.isEmpty) return mensaje;
     if (maxLength != null && value.length > maxLength) return 'Máximo $maxLength caracteres';
     if (isEmail == true && !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) return 'Email no válido';
-    if (isNumeric == true && !RegExp(r'^\d+$').hasMatch(value)) return 'Ingresar solo números';
+    if (isNumeric == true && !RegExp(r'^\d+$').hasMatch(value)) return 'Ingresa solo números';
     return null;
   }
 
