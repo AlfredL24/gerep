@@ -9,6 +9,26 @@ class MainScreenView extends StatelessWidget {
     Navigator.pushNamed(context, '/moduloUsuarios');
   }
 
+  void _irModuloAlumnos(BuildContext context) {
+    Navigator.pushNamed(context, '/moduloAlumnos');
+  }
+
+  void _irModuloDocentes(BuildContext context) {
+    Navigator.pushNamed(context, '/moduloDocentes');
+  }
+
+  void _irModuloPadres(BuildContext context) {
+    Navigator.pushNamed(context, '/moduloPadres');
+  }
+
+  void _irModuloReportes(BuildContext context) {
+    Navigator.pushNamed(context, '/moduloReportes');
+  }
+
+  void _irModuloSalones(BuildContext context) {
+    Navigator.pushNamed(context, '/moduloSalones');
+  }
+
   void _regresarLogin(BuildContext context) {
     Navigator.pushNamed(context, '/login');
   }
@@ -46,64 +66,79 @@ class MainScreenView extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.blueGrey[100],
-                  child: Column(
-                    children: [
-                      SizedBox(height: 30),
-                      Icon(Icons.face_sharp, size: 50),
-                      SizedBox(height: 30),
-                      Text('Alumnos', style: TextStyle(fontSize: 25)),
-                    ],
+                InkWell(
+                  onTap: () => _irModuloAlumnos(context),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    color: Colors.blueGrey[100],
+                    child: Column(
+                      children: [
+                        SizedBox(height: 30),
+                        Icon(Icons.face_sharp, size: 50),
+                        SizedBox(height: 30),
+                        Text('Alumnos', style: TextStyle(fontSize: 25)),
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.blueGrey[100],
-                  child: Column(
-                    children: [
-                      SizedBox(height: 30),
-                      Icon(Icons.school_rounded, size: 50),
-                      SizedBox(height: 30),
-                      const Text('Docentes', style: TextStyle(fontSize: 25)),
-                    ],
+                InkWell(
+                  onTap: () => _irModuloDocentes(context),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    color: Colors.blueGrey[100],
+                    child: Column(
+                      children: [
+                        SizedBox(height: 30),
+                        Icon(Icons.school_rounded, size: 50),
+                        SizedBox(height: 30),
+                        const Text('Docentes', style: TextStyle(fontSize: 25)),
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.blueGrey[100],
-                  child: Column(
-                    children: [
-                      SizedBox(height: 30),
-                      Icon(Icons.family_restroom, size: 50),
-                      SizedBox(height: 30),
-                      const Text('Padres', style: TextStyle(fontSize: 25)),
-                    ],
+                InkWell(
+                  onTap: () => _irModuloPadres(context),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    color: Colors.blueGrey[100],
+                    child: Column(
+                      children: [
+                        SizedBox(height: 30),
+                        Icon(Icons.family_restroom, size: 50),
+                        SizedBox(height: 30),
+                        const Text('Padres', style: TextStyle(fontSize: 25)),
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.blueGrey[100],
-                  child: Column(
-                    children: [
-                      SizedBox(height: 30),
-                      Icon(Icons.edit_document, size: 50),
-                      SizedBox(height: 30),
-                      const Text('Reportes', style: TextStyle(fontSize: 25)),
-                    ],
+                InkWell(
+                  onTap: () => _irModuloReportes(context),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    color: Colors.blueGrey[100],
+                    child: Column(
+                      children: [
+                        SizedBox(height: 30),
+                        Icon(Icons.edit_document, size: 50),
+                        SizedBox(height: 30),
+                        const Text('Reportes', style: TextStyle(fontSize: 25)),
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  color: Colors.blueGrey[100],
-                  child: Column(
-                    children: [
-                      SizedBox(height: 30),
-                      Icon(Icons.home_filled, size: 50),
-                      SizedBox(height: 30),
-                      const Text('Salones', style: TextStyle(fontSize: 25)),
-                    ],
+                InkWell(
+                  onTap: () => _irModuloSalones(context),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    color: Colors.blueGrey[100],
+                    child: Column(
+                      children: [
+                        SizedBox(height: 30),
+                        Icon(Icons.home_filled, size: 50),
+                        SizedBox(height: 30),
+                        const Text('Salones', style: TextStyle(fontSize: 25)),
+                      ],
+                    ),
                   ),
                 ),
               ],

@@ -7,6 +7,7 @@ import 'reset_credentials_view.dart';
 import 'main_screen_view.dart';
 import 'splash_screen.dart';
 import 'modulo_usuarios.dart';
+import 'modulo_alumnos.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/resetCredentials': (context) => ResetCredentialsView(),
         '/mainScreen': (context) => MainScreenView(),
         '/moduloUsuarios': (context) => ModuloUsuarios(),
+        '/moduloAlumnos': (context) => ModuloAlumnos(),
       },
     );
   }
