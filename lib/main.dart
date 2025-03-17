@@ -7,7 +7,7 @@ import 'reset_credentials_view.dart';
 import 'main_screen_view.dart';
 import 'splash_screen.dart';
 import 'modulo_usuarios.dart';
-import 'modulo_alumnos.dart';
+import 'alumnos/modulo_alumnos.dart';
 
 void main() {
   runApp(MyApp());
