@@ -14,7 +14,7 @@ class ModuloAlumnosCrear extends StatelessWidget {
       body: json.encode(alumnoData),
     );
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       Navigator.pop(context);
     } else {
       throw Exception('Error al crear alumno');

@@ -58,11 +58,47 @@ class _ModuloAlumnosState extends State<ModuloAlumnos> {
 
   Future<void> deleteAlumno(int id) async {
     final response = await http.delete(Uri.parse("$apiUrl/$id"));
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 204) {
       setState(() {});
     } else {
       throw Exception('Error al eliminar alumno');
     }
+  }
+
+  Future<void> confirmDelete(BuildContext context, int id) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirmar eliminación"),
+          content: Text("¿Seguro que deseas eliminar este alumno?"),
+          actions: [
+            TextButton(
+              onPressed: () =>
+                  Navigator.of(context).pop(), // Cerrar sin eliminar
+              child: Text("Cancelar"),
+            ),
+            TextButton(
+              onPressed: () async {
+                Navigator.of(context).pop(); // Cerrar diálogo
+                try {
+                  await deleteAlumno(id); // Intentar eliminar
+                } catch (e) {
+                  // Si hay error, mostrar mensaje en un SnackBar
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Error al eliminar el alumno"),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              },
+              child: Text("Eliminar", style: TextStyle(color: Colors.red)),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -93,7 +129,7 @@ class _ModuloAlumnosState extends State<ModuloAlumnos> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
-                          icon: Icon(Icons.edit, color: Colors.blue),
+                          icon: Icon(Icons.edit_document, color: Colors.blue),
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -106,7 +142,7 @@ class _ModuloAlumnosState extends State<ModuloAlumnos> {
                         ),
                         IconButton(
                           icon: Icon(Icons.delete, color: Colors.red),
-                          onPressed: () => deleteAlumno(alumno.id),
+                          onPressed: () => confirmDelete(context, alumno.id),
                         ),
                       ],
                     ),
@@ -117,14 +153,26 @@ class _ModuloAlumnosState extends State<ModuloAlumnos> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ModuloAlumnosCrear()),
           ).then((_) => setState(() {}));
         },
-        child: Icon(Icons.add),
+        backgroundColor: Colors.green.shade300,
+        label: Text(
+          'Agregar alumno',
+          style: TextStyle(color: Colors.black),
+        ),
+        icon: Icon(
+          Icons.add_circle_outline,
+          color: Colors.black,
+        ),
+        //child: Icon(
+        //Icons.add_circle,
+        //color: Colors.green,
+        //),
       ),
     );
   }

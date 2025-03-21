@@ -39,70 +39,156 @@ class _AlumnoFormState extends State<AlumnoForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(widget.isEditing ? "Editar Alumno" : "Agregar Alumno")),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                initialValue: nombre,
-                decoration: InputDecoration(labelText: "Nombre"),
-                onChanged: (value) => nombre = value,
+        appBar: AppBar(
+            title: Text(widget.isEditing ? "Editar Alumno" : "Agregar Alumno")),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    Image.asset('assets/logo_gerep.png', height: 100),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.85,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          TextFormField(
+                            initialValue: nombre,
+                            decoration: InputDecoration(
+                              labelText: "Nombre",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              filled: true,
+                              fillColor: Colors.grey[200],
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 12),
+                            ),
+                            onChanged: (value) => nombre = value,
+                          ),
+                          SizedBox(height: 8),
+                          TextFormField(
+                            initialValue: edad.toString(),
+                            decoration: InputDecoration(
+                              labelText: "Edad",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              filled: true,
+                              fillColor: Colors.grey[200],
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 12),
+                            ),
+                            keyboardType: TextInputType.number,
+                            onChanged: (value) =>
+                                edad = int.tryParse(value) ?? 0,
+                          ),
+                          SizedBox(height: 8),
+                          TextFormField(
+                            initialValue: foto,
+                            decoration: InputDecoration(
+                              labelText: "Foto (URL)",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              filled: true,
+                              fillColor: Colors.grey[200],
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 12),
+                            ),
+                            onChanged: (value) => foto = value,
+                          ),
+                          SizedBox(height: 8),
+                          TextFormField(
+                            initialValue: enfermedades,
+                            decoration: InputDecoration(
+                              labelText: "Enfermedades",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              filled: true,
+                              fillColor: Colors.grey[200],
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 12),
+                            ),
+                            onChanged: (value) => enfermedades = value,
+                          ),
+                          SizedBox(height: 8),
+                          TextFormField(
+                            initialValue: tipoSangre,
+                            decoration: InputDecoration(
+                              labelText: "Tipo de Sangre",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              filled: true,
+                              fillColor: Colors.grey[200],
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 12),
+                            ),
+                            onChanged: (value) => tipoSangre = value,
+                          ),
+                          SizedBox(height: 8),
+                          TextFormField(
+                            initialValue: alergias,
+                            decoration: InputDecoration(
+                              labelText: "Alergias",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              filled: true,
+                              fillColor: Colors.grey[200],
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 12),
+                            ),
+                            onChanged: (value) => alergias = value,
+                          ),
+                          SizedBox(height: 8),
+                          TextFormField(
+                            initialValue: cuidadosEspeciales,
+                            decoration: InputDecoration(
+                              labelText: "Cuidados Especiales",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              filled: true,
+                              fillColor: Colors.grey[200],
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 12),
+                            ),
+                            onChanged: (value) => cuidadosEspeciales = value,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(Colors.green.shade300)),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          widget.onSubmit({
+                            "nombre": nombre,
+                            "edad": edad,
+                            "foto": foto,
+                            "enfermedades": enfermedades,
+                            "tipoSangre": tipoSangre,
+                            "alergias": alergias,
+                            "cuidadosEspeciales": cuidadosEspeciales,
+                          });
+                        }
+                      },
+                      child: Text(
+                        "Guardar",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              TextFormField(
-                initialValue: edad.toString(),
-                decoration: InputDecoration(labelText: "Edad"),
-                keyboardType: TextInputType.number,
-                onChanged: (value) => edad = int.tryParse(value) ?? 0,
-              ),
-              TextFormField(
-                initialValue: foto,
-                decoration: InputDecoration(labelText: "Foto (URL)"),
-                onChanged: (value) => foto = value,
-              ),
-              TextFormField(
-                initialValue: enfermedades,
-                decoration: InputDecoration(labelText: "Enfermedades"),
-                onChanged: (value) => enfermedades = value,
-              ),
-              TextFormField(
-                initialValue: tipoSangre,
-                decoration: InputDecoration(labelText: "Tipo de Sangre"),
-                onChanged: (value) => tipoSangre = value,
-              ),
-              TextFormField(
-                initialValue: alergias,
-                decoration: InputDecoration(labelText: "Alergias"),
-                onChanged: (value) => alergias = value,
-              ),
-              TextFormField(
-                initialValue: cuidadosEspeciales,
-                decoration: InputDecoration(labelText: "Cuidados Especiales"),
-                onChanged: (value) => cuidadosEspeciales = value,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    widget.onSubmit({
-                      "nombre": nombre,
-                      "edad": edad,
-                      "foto": foto,
-                      "enfermedades": enfermedades,
-                      "tipoSangre": tipoSangre,
-                      "alergias": alergias,
-                      "cuidadosEspeciales": cuidadosEspeciales,
-                    });
-                  }
-                },
-                child: Text("Guardar"),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
