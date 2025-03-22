@@ -44,104 +44,135 @@ class MainScreenView extends StatelessWidget {
           SizedBox(height: 20),
           Image.asset('assets/logo_gerep.png', height: 100),
           Expanded(
-            child: GridView.count(
-              primary: false,
-              padding: const EdgeInsets.all(20),
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              crossAxisCount: 2,
-              children: <Widget>[
-                InkWell(
-                  onTap: () => _irModuloUsuarios(context),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    color: Colors.blueGrey[100],
-                    child: Column(
-                      children: [
-                        SizedBox(height: 30),
-                        Icon(Icons.person, size: 50),
-                        SizedBox(height: 30),
-                        const Text('Usuarios', style: TextStyle(fontSize: 25)),
-                      ],
+            child: SingleChildScrollView(
+              child: GridView.count(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                primary: false,
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                crossAxisCount: 2,
+                children: <Widget>[
+                  InkWell(
+                    onTap: () => _irModuloUsuarios(context),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      color: Colors.blueGrey[100],
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          Icon(Icons.person, size: 50),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          const Text('Usuarios',
+                              style: TextStyle(fontSize: 25)),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                InkWell(
-                  onTap: () => _irModuloAlumnos(context),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    color: Colors.blueGrey[100],
-                    child: Column(
-                      children: [
-                        SizedBox(height: 30),
-                        Icon(Icons.face_sharp, size: 50),
-                        SizedBox(height: 30),
-                        Text('Alumnos', style: TextStyle(fontSize: 25)),
-                      ],
+                  InkWell(
+                    onTap: () => _irModuloAlumnos(context),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      color: Colors.blueGrey[100],
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          Icon(Icons.face_sharp, size: 50),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          Text('Alumnos', style: TextStyle(fontSize: 25)),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                InkWell(
-                  onTap: () => _irModuloDocentes(context),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    color: Colors.blueGrey[100],
-                    child: Column(
-                      children: [
-                        SizedBox(height: 30),
-                        Icon(Icons.school_rounded, size: 50),
-                        SizedBox(height: 30),
-                        const Text('Docentes', style: TextStyle(fontSize: 25)),
-                      ],
+                  InkWell(
+                    onTap: () => _irModuloDocentes(context),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      color: Colors.blueGrey[100],
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          Icon(Icons.school_rounded, size: 50),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          const Text('Docentes',
+                              style: TextStyle(fontSize: 25)),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                InkWell(
-                  onTap: () => _irModuloPadres(context),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    color: Colors.blueGrey[100],
-                    child: Column(
-                      children: [
-                        SizedBox(height: 30),
-                        Icon(Icons.family_restroom, size: 50),
-                        SizedBox(height: 30),
-                        const Text('Padres', style: TextStyle(fontSize: 25)),
-                      ],
+                  InkWell(
+                    onTap: () => _irModuloPadres(context),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      color: Colors.blueGrey[100],
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          Icon(Icons.family_restroom, size: 50),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          const Text('Padres', style: TextStyle(fontSize: 25)),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                InkWell(
-                  onTap: () => _irModuloReportes(context),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    color: Colors.blueGrey[100],
-                    child: Column(
-                      children: [
-                        SizedBox(height: 30),
-                        Icon(Icons.edit_document, size: 50),
-                        SizedBox(height: 30),
-                        const Text('Reportes', style: TextStyle(fontSize: 25)),
-                      ],
+                  InkWell(
+                    onTap: () => _irModuloReportes(context),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      color: Colors.blueGrey[100],
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          Icon(Icons.edit_document, size: 50),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          const Text('Reportes',
+                              style: TextStyle(fontSize: 25)),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                InkWell(
-                  onTap: () => _irModuloSalones(context),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    color: Colors.blueGrey[100],
-                    child: Column(
-                      children: [
-                        SizedBox(height: 30),
-                        Icon(Icons.home_filled, size: 50),
-                        SizedBox(height: 30),
-                        const Text('Salones', style: TextStyle(fontSize: 25)),
-                      ],
+                  InkWell(
+                    onTap: () => _irModuloSalones(context),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      color: Colors.blueGrey[100],
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          Icon(Icons.home_filled, size: 50),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.02),
+                          const Text('Salones', style: TextStyle(fontSize: 25)),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
