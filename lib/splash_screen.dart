@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          // Imagen de fondo que cubre toda la pantalla
+          // Imagen de fondo que cubre toda la pantall  a
           Positioned.fill(
             child: Image.asset(
               'assets/splas_screen.png',
