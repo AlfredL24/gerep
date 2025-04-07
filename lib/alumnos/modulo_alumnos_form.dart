@@ -21,6 +21,7 @@ class _AlumnoFormState extends State<AlumnoForm> {
   String tipoSangre = "";
   String alergias = "";
   String cuidadosEspeciales = "";
+  String tagUid = "";
 
   @override
   void initState() {
@@ -33,6 +34,7 @@ class _AlumnoFormState extends State<AlumnoForm> {
       tipoSangre = widget.alumno!.tipoSangre;
       alergias = widget.alumno!.alergias;
       cuidadosEspeciales = widget.alumno!.cuidadosEspeciales;
+      tagUid = widget.alumno!.tagUid;
     }
   }
 
@@ -158,6 +160,20 @@ class _AlumnoFormState extends State<AlumnoForm> {
                             ),
                             onChanged: (value) => cuidadosEspeciales = value,
                           ),
+                          SizedBox(height: 8),
+                          TextFormField(
+                            initialValue: tagUid,
+                            decoration: InputDecoration(
+                              labelText: "TAG",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              filled: true,
+                              fillColor: Colors.grey[200],
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 12),
+                            ),
+                            onChanged: (value) => tagUid = value,
+                          ),
                         ],
                       ),
                     ),
@@ -176,6 +192,7 @@ class _AlumnoFormState extends State<AlumnoForm> {
                             "tipoSangre": tipoSangre,
                             "alergias": alergias,
                             "cuidadosEspeciales": cuidadosEspeciales,
+                            "tagUid":tagUid,
                           });
                         }
                       },

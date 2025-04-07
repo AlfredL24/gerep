@@ -12,7 +12,7 @@ class MainScreenView extends StatelessWidget {
   void _irModuloAlumnos(BuildContext context) {
     Navigator.pushNamed(context, '/moduloAlumnos');
   }
-
+/*
   void _irModuloDocentes(BuildContext context) {
     Navigator.pushNamed(context, '/moduloDocentes');
   }
@@ -28,9 +28,12 @@ class MainScreenView extends StatelessWidget {
   void _irModuloSalones(BuildContext context) {
     Navigator.pushNamed(context, '/moduloSalones');
   }
-
+*/
   void _regresarLogin(BuildContext context) {
     Navigator.pushNamed(context, '/login');
+  }
+  void _irModuloScan(BuildContext context) {
+    Navigator.pushNamed(context, '/moduloScan');
   }
 
   @override
@@ -94,6 +97,26 @@ class MainScreenView extends StatelessWidget {
                     ),
                   ),
                   InkWell(
+                    onTap: () => _irModuloScan(context),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      color: Colors.blueGrey[100],
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              height:
+                              MediaQuery.of(context).size.height * 0.02),
+                          Icon(Icons.person, size: 50),
+                          SizedBox(
+                              height:
+                              MediaQuery.of(context).size.height * 0.02),
+                          const Text('Scanner',
+                              style: TextStyle(fontSize: 25)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  /*InkWell(
                     onTap: () => _irModuloDocentes(context),
                     child: Container(
                       padding: const EdgeInsets.all(8),
@@ -170,7 +193,7 @@ class MainScreenView extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),

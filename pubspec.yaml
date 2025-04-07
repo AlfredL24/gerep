@@ -31,6 +31,8 @@ dependencies:
   sqflite: ^2.4.2
   path: ^1.8.3
   http: ^0.13.4
+  nfc_manager: ^3.5.0
+  audioplayers: ^6.4.0
   flutter:
     sdk: flutter
 
@@ -67,7 +69,13 @@ flutter:
     - assets/bienvenido.png
     - assets/logo_gerep.png
     - assets/fondologin.png
-  # - images/a_dot_ham.jpeg
+    - assets/Colocar_NFC.png
+    - assets/NFC_Válido.png
+    - assets/NFC_Invalido.png
+    - assets/sounds/Beep.mp3
+    - assets/sounds/Beep_Invalido.mp3
+
+      # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

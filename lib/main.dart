@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerep/ModuloNFC.dart';
 import 'package:gerep/usuarios/modulo_usuarios.dart';
 import 'welcome_view.dart';
 import 'login_view.dart';
@@ -29,6 +30,8 @@ class MyApp extends StatelessWidget {
         '/mainScreen': (context) => MainScreenView(),
         '/moduloUsuarios': (context) => ModuloUsuario(),
         '/moduloAlumnos': (context) => ModuloAlumnos(),
+        '/moduloScan': (context) => ModuloNFC(),
+
       },
     );
   }

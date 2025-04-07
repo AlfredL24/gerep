@@ -13,6 +13,9 @@ class Alumno {
   final String tipoSangre;
   final String alergias;
   final String cuidadosEspeciales;
+  final String tagUid;
+
+
 
   Alumno(
       {required this.id,
@@ -22,7 +25,8 @@ class Alumno {
       required this.enfermedades,
       required this.tipoSangre,
       required this.alergias,
-      required this.cuidadosEspeciales});
+      required this.cuidadosEspeciales,
+      required this.tagUid});
 
   factory Alumno.fromJson(Map<String, dynamic> json) {
     return Alumno(
@@ -34,6 +38,7 @@ class Alumno {
       tipoSangre: json['tipoSangre'] ?? "",
       alergias: json['alergias'] ?? "",
       cuidadosEspeciales: json['cuidadosEspeciales'] ?? "",
+      tagUid: json['tag_uid']??"",
     );
   }
 }

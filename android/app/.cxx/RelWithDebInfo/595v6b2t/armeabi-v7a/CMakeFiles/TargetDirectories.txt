@@ -1,0 +1,2 @@
+C:/Users/alfre/StudioProjects/GEREP/android/app/.cxx/RelWithDebInfo/595v6b2t/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/alfre/StudioProjects/GEREP/android/app/.cxx/RelWithDebInfo/595v6b2t/armeabi-v7a/CMakeFiles/rebuild_cache.dir
