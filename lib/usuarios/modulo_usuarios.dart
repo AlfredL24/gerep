@@ -14,29 +14,26 @@ class Usuario {
   final String contrasena;
   final String foto;
 
-
-
   Usuario(
       {required this.id,
-        required this.nombre,
-        required this.telefono,
-        required this.email,
-        required this.grupo,
-        required this.direccion,
-        required this.contrasena,
-        required this.foto});
+      required this.nombre,
+      required this.telefono,
+      required this.email,
+      required this.grupo,
+      required this.direccion,
+      required this.contrasena,
+      required this.foto});
 
   factory Usuario.fromJson(Map<String, dynamic> json) {
     return Usuario(
       id: json['id'],
       nombre: json['nombre'],
       telefono: int.tryParse(json['telefono'].toString()) ?? 0,
-      email: json['email']??"",
+      email: json['email'] ?? "",
       grupo: json['grupo'] ?? "",
       direccion: json['direccion'] ?? "",
       contrasena: json['contrasena'] ?? "",
       foto: json['foto'] ?? "",
-
     );
   }
 }
@@ -45,6 +42,7 @@ class ModuloUsuario extends StatefulWidget {
   @override
   _ModuloUsuarioState createState() => _ModuloUsuarioState();
 }
+
 class _ModuloUsuarioState extends State<ModuloUsuario> {
   final String apiUrl = "http://89.117.149.126/gerep/api/usuarios";
 
@@ -59,43 +57,60 @@ class _ModuloUsuarioState extends State<ModuloUsuario> {
   }
 
   Future<void> deleteUsuario(int id) async {
-    try {
-      final response = await http.delete(Uri.parse("$apiUrl/$id"));
+    final response = await http.delete(Uri.parse("$apiUrl/$id"));
 
-      if (response.statusCode == 200 || response.body.isEmpty) {
-        // Mostrar SnackBar de éxito
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("Usuario eliminado correctamente"),
-            backgroundColor: Colors.green,
-            duration: Duration(seconds: 2),
-          ),
-        );
-
-        //setState para actualizar la lista
-        setState(() {});
-      } else {
-        // Mostrar error si la API devuelve otra respuesta
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("Error al eliminar usuario: ${response.body}"),
-            backgroundColor: Colors.red,
-            duration: Duration(seconds: 3),
-          ),
-        );
-      }
-    } catch (e) {
-      // Manejar errores de conexión o fallos inesperados
+    if (response.statusCode == 200 || response.statusCode == 204) {
+      // Mostrar SnackBar de éxito
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Error de conexión: $e"),
-          backgroundColor: Colors.red,
-          duration: Duration(seconds: 3),
+          content: Text("Usuario eliminado correctamente"),
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 2),
         ),
       );
+
+      //setState para actualizar la lista
+      setState(() {});
+    } else {
+      throw Exception('Error al eliminar alumno');
     }
   }
 
+  Future<void> confirmDelete(BuildContext context, int id) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirmar eliminación"),
+          content: Text("¿Seguro que deseas eliminar este usuario?"),
+          actions: [
+            TextButton(
+              onPressed: () =>
+                  Navigator.of(context).pop(), // Cerrar sin eliminar
+              child: Text("Cancelar"),
+            ),
+            TextButton(
+              onPressed: () async {
+                Navigator.of(context).pop(); // Cerrar diálogo
+                try {
+                  await deleteUsuario(id); // Intentar eliminar
+                } catch (e) {
+                  // Si hay error, mostrar mensaje en un SnackBar
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Error al eliminar el usuario"),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              },
+              child: Text("Eliminar", style: TextStyle(color: Colors.red)),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +153,7 @@ class _ModuloUsuarioState extends State<ModuloUsuario> {
                         ),
                         IconButton(
                           icon: Icon(Icons.delete, color: Colors.red),
-                          onPressed: () => deleteUsuario(usuario.id),
+                          onPressed: () => confirmDelete(context, usuario.id),
                         ),
                       ],
                     ),
@@ -158,7 +173,6 @@ class _ModuloUsuarioState extends State<ModuloUsuario> {
         },
         child: Icon(Icons.add),
       ),
-
     );
   }
 }

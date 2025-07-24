@@ -15,8 +15,6 @@ class Alumno {
   final String cuidadosEspeciales;
   final String tagUid;
 
-
-
   Alumno(
       {required this.id,
       required this.nombre,
@@ -38,7 +36,7 @@ class Alumno {
       tipoSangre: json['tipoSangre'] ?? "",
       alergias: json['alergias'] ?? "",
       cuidadosEspeciales: json['cuidadosEspeciales'] ?? "",
-      tagUid: json['tag_uid']??"",
+      tagUid: json['tag_uid'] ?? "",
     );
   }
 }
@@ -64,6 +62,13 @@ class _ModuloAlumnosState extends State<ModuloAlumnos> {
   Future<void> deleteAlumno(int id) async {
     final response = await http.delete(Uri.parse("$apiUrl/$id"));
     if (response.statusCode == 200 || response.statusCode == 204) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Alumno eliminado correctamente"),
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 2),
+        ),
+      );
       setState(() {});
     } else {
       throw Exception('Error al eliminar alumno');

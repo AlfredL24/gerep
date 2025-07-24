@@ -19,6 +19,13 @@ class ModuloAlumnosActualizar extends StatelessWidget {
     );
 
     if (response.statusCode == 200) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Alumno actualizado correctamente"),
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 2),
+        ),
+      );
       Navigator.pop(context);
     } else {
       throw Exception('Error al actualizar alumno');

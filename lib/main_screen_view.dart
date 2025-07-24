@@ -12,7 +12,7 @@ class MainScreenView extends StatelessWidget {
   void _irModuloAlumnos(BuildContext context) {
     Navigator.pushNamed(context, '/moduloAlumnos');
   }
-/*
+
   void _irModuloDocentes(BuildContext context) {
     Navigator.pushNamed(context, '/moduloDocentes');
   }
@@ -21,17 +21,19 @@ class MainScreenView extends StatelessWidget {
     Navigator.pushNamed(context, '/moduloPadres');
   }
 
+/*
   void _irModuloReportes(BuildContext context) {
     Navigator.pushNamed(context, '/moduloReportes');
   }
-
+*/
   void _irModuloSalones(BuildContext context) {
     Navigator.pushNamed(context, '/moduloSalones');
   }
-*/
+
   void _regresarLogin(BuildContext context) {
     Navigator.pushNamed(context, '/login');
   }
+
   void _irModuloScan(BuildContext context) {
     Navigator.pushNamed(context, '/moduloScan');
   }
@@ -105,18 +107,17 @@ class MainScreenView extends StatelessWidget {
                         children: [
                           SizedBox(
                               height:
-                              MediaQuery.of(context).size.height * 0.02),
-                          Icon(Icons.person, size: 50),
+                                  MediaQuery.of(context).size.height * 0.02),
+                          Icon(Icons.search, size: 50),
                           SizedBox(
                               height:
-                              MediaQuery.of(context).size.height * 0.02),
-                          const Text('Scanner',
-                              style: TextStyle(fontSize: 25)),
+                                  MediaQuery.of(context).size.height * 0.02),
+                          const Text('Scanner', style: TextStyle(fontSize: 25)),
                         ],
                       ),
                     ),
                   ),
-                  /*InkWell(
+                  InkWell(
                     onTap: () => _irModuloDocentes(context),
                     child: Container(
                       padding: const EdgeInsets.all(8),
@@ -155,7 +156,7 @@ class MainScreenView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  InkWell(
+                  /*InkWell(
                     onTap: () => _irModuloReportes(context),
                     child: Container(
                       padding: const EdgeInsets.all(8),
@@ -174,7 +175,7 @@ class MainScreenView extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),
+                  ),*/
                   InkWell(
                     onTap: () => _irModuloSalones(context),
                     child: Container(
@@ -193,7 +194,7 @@ class MainScreenView extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),*/
+                  ),
                 ],
               ),
             ),

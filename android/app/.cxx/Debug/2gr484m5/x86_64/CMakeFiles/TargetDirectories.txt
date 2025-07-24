@@ -1,0 +1,2 @@
+C:/Users/Recursos Materiales/Flutter_projects/gerep/android/app/.cxx/Debug/2gr484m5/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/Recursos Materiales/Flutter_projects/gerep/android/app/.cxx/Debug/2gr484m5/x86_64/CMakeFiles/rebuild_cache.dir
