@@ -51,78 +51,131 @@ class _UsuarioFormState extends State<UsuarioForm> {
         padding: EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                initialValue: nombre,
-                decoration: InputDecoration(labelText: "Nombre"),
-                onChanged: (value) => nombre = value,
-              ),
-              TextFormField(
-                initialValue: telefono.toString(),
-                decoration: InputDecoration(labelText: "Telefono"),
-                keyboardType: TextInputType.number,
-                onChanged: (value) => telefono = int.tryParse(value) ?? 0,
-              ),
-              TextFormField(
-                initialValue: email,
-                decoration: InputDecoration(labelText: "Email"),
-                onChanged: (value) => email = value,
-              ),
-              TextFormField(
-                initialValue: grupo,
-                decoration: InputDecoration(labelText: "Grupo"),
-                onChanged: (value) => grupo = value,
-              ),
-              TextFormField(
-                initialValue: direccion,
-                decoration: InputDecoration(labelText: "Direccion"),
-                onChanged: (value) => direccion = value,
-              ),
-              TextFormField(
-                initialValue: contrasena,
-                decoration: InputDecoration(labelText: "Contraseña"),
-                onChanged: (value) => contrasena = value,
-              ),
-              SizedBox(height: 10),
-              DropdownButtonFormField<String>(
-                value: (["Director", "Profesor", "Padre"].contains(rolSeleccionado))
-                    ? rolSeleccionado
-                    : "Profesor", // Valor predeterminado si no es válido
-                decoration: InputDecoration(labelText: "Rol"),
-                items: [
-                  DropdownMenuItem(value: "Director", child: Text("Director")),
-                  DropdownMenuItem(value: "Profesor", child: Text("Profesor")),
-                  DropdownMenuItem(value: "Padre", child: Text("Padre de familia")),
-                ],
-                onChanged: (value) {
-                  setState(() {
-                    rolSeleccionado = value ?? "Profesor";
-                  });
-                },
-              ),
-
-
-
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    widget.onSubmit({
-                      "nombre": nombre,
-                      "telefono": telefono,
-                      "email": email,
-                      "rol": grupo,
-                      "direccion": direccion,
-                      "contrasena": contrasena,
-                      "foto": foto,
-                      "rol": rolSeleccionado,
+            child: Column(
+              children: [
+                TextFormField(
+                  initialValue: nombre,
+                  decoration: InputDecoration(labelText: "Nombre"),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'El nombre no puede estar vacío';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => nombre = value,
+                ),
+                TextFormField(
+                  initialValue: telefono == 0 ? "" : telefono.toString(),
+                  decoration: InputDecoration(labelText: "Teléfono"),
+                  keyboardType: TextInputType.number,
+                  maxLength: 10,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) return 'Campo obligatorio';
+                    if (!RegExp(r'^\d{10}$').hasMatch(value)) {
+                      return 'Debe contener exactamente 10 dígitos';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => telefono = int.tryParse(value) ?? 0,
+                ),
+                TextFormField(
+                  initialValue: email,
+                  decoration: InputDecoration(labelText: "Email"),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) return 'Campo obligatorio';
+                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                      return 'Correo no válido';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => email = value,
+                ),
+                TextFormField(
+                  initialValue: grupo,
+                  decoration: InputDecoration(labelText: "Grupo (ej. 3A)"),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) return 'Campo obligatorio';
+                    if (!RegExp(r'^[1-9][A-Za-z]$').hasMatch(value)) {
+                      return 'Formato inválido. Ej: 3A';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => grupo = value.toUpperCase(),
+                ),
+                TextFormField(
+                  initialValue: direccion,
+                  decoration: InputDecoration(labelText: "Dirección"),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'La dirección no puede estar vacía';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => direccion = value,
+                ),
+                TextFormField(
+                  initialValue: contrasena,
+                  decoration: InputDecoration(labelText: "Contraseña"),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) return 'Campo obligatorio';
+                    if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$').hasMatch(value)) {
+                      return 'Debe tener 8 caracteres, una mayúscula, una minúscula, un número y un símbolo';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) => contrasena = value,
+                ),
+                SizedBox(height: 10),
+                DropdownButtonFormField<String>(
+                  value: (["Director", "Profesor", "Padre"].contains(rolSeleccionado))
+                      ? rolSeleccionado
+                      : "Profesor", // Valor predeterminado si no es válido
+                  decoration: InputDecoration(labelText: "Rol"),
+                  items: [
+                    DropdownMenuItem(value: "Director", child: Text("Director")),
+                    DropdownMenuItem(value: "Profesor", child: Text("Profesor")),
+                    DropdownMenuItem(value: "Padre", child: Text("Padre de familia")),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      rolSeleccionado = value ?? "Profesor";
                     });
-                  }
-                },
-                child: Text("Guardar"),
-              ),
-            ],
-          ),
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) return 'Selecciona un rol';
+                    return null;
+                  },
+                ),
+
+                SizedBox(height: 20),
+
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      widget.onSubmit({
+                        "nombre": nombre,
+                        "telefono": telefono,
+                        "email": email,
+                        "rol": rolSeleccionado,
+                        "direccion": direccion,
+                        "contrasena": contrasena,
+                        "foto": foto,
+                        "grupo": grupo,
+                      });
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Corrige los errores del formulario.'),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                    }
+                  },
+                  child: Text("Guardar"),
+                ),
+              ],
+            )
         ),
       ),
     );
