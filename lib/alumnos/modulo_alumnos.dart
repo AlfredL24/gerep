@@ -9,9 +9,9 @@ class Alumno {
   final String nombre;
   final int edad;
   final String foto;
-  final String enfermedades;
+  //final String enfermedades;
   final String tipoSangre;
-  final String alergias;
+  //final String alergias;
   final String cuidadosEspeciales;
   final String tagUid;
 
@@ -20,9 +20,9 @@ class Alumno {
       required this.nombre,
       required this.edad,
       required this.foto,
-      required this.enfermedades,
+      //required this.enfermedades,
       required this.tipoSangre,
-      required this.alergias,
+      //required this.alergias,
       required this.cuidadosEspeciales,
       required this.tagUid});
 
@@ -32,11 +32,11 @@ class Alumno {
       nombre: json['nombre'],
       edad: json['edad'],
       foto: json['foto'],
-      enfermedades: json['enfermedades'] ?? "",
+      //enfermedades: json['enfermedades'] ?? "",
       tipoSangre: json['tipoSangre'] ?? "",
-      alergias: json['alergias'] ?? "",
+      //alergias: json['alergias'] ?? "",
       cuidadosEspeciales: json['cuidadosEspeciales'] ?? "",
-      tagUid: json['tag_uid'] ?? "",
+      tagUid: json['tagUid'] ?? "",
     );
   }
 }
