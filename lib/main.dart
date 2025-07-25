@@ -9,6 +9,8 @@ import 'main_screen_view.dart';
 import 'splash_screen.dart';
 import 'usuarios/modulo_usuarios.dart';
 import 'alumnos/modulo_alumnos.dart';
+import 'usuarios/modulo_padres.dart';
+import 'usuarios/modulo_docentes.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,7 +33,8 @@ class MyApp extends StatelessWidget {
         '/moduloUsuarios': (context) => ModuloUsuario(),
         '/moduloAlumnos': (context) => ModuloAlumnos(),
         '/moduloScan': (context) => ModuloNFC(),
-
+        '/moduloPadres': (context) => ModuloPadres(),
+        '/moduloDocentes': (context) => ModuloDocentes(),
       },
     );
   }

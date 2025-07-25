@@ -12,6 +12,7 @@ class Usuario {
   final String grupo;
   final String direccion;
   final String contrasena;
+  final String rol;
   final String foto;
 
   Usuario(
@@ -22,6 +23,7 @@ class Usuario {
       required this.grupo,
       required this.direccion,
       required this.contrasena,
+      required this.rol,
       required this.foto});
 
   factory Usuario.fromJson(Map<String, dynamic> json) {
@@ -33,6 +35,7 @@ class Usuario {
       grupo: json['grupo'] ?? "",
       direccion: json['direccion'] ?? "",
       contrasena: json['contrasena'] ?? "",
+      rol: json['rol'] ?? "",
       foto: json['foto'] ?? "",
     );
   }
@@ -135,7 +138,7 @@ class _ModuloUsuarioState extends State<ModuloUsuario> {
                       backgroundImage: NetworkImage(usuario.foto),
                     ),
                     title: Text(usuario.nombre),
-                    subtitle: Text("telefono: ${usuario.telefono}"),
+                    subtitle: Text("Rol: ${usuario.rol}"),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [

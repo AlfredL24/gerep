@@ -17,9 +17,9 @@ class _AlumnoFormState extends State<AlumnoForm> {
   String nombre = "";
   int edad = 0;
   String foto = "";
-  String enfermedades = "";
+  //String enfermedades = "";
   String tipoSangre = "";
-  String alergias = "";
+  //String alergias = "";
   String cuidadosEspeciales = "";
   String tagUid = "";
 
@@ -30,9 +30,9 @@ class _AlumnoFormState extends State<AlumnoForm> {
       nombre = widget.alumno!.nombre;
       edad = widget.alumno!.edad;
       foto = widget.alumno!.foto;
-      enfermedades = widget.alumno!.enfermedades;
+      //enfermedades = widget.alumno!.enfermedades;
       tipoSangre = widget.alumno!.tipoSangre;
-      alergias = widget.alumno!.alergias;
+      //alergias = widget.alumno!.alergias;
       cuidadosEspeciales = widget.alumno!.cuidadosEspeciales;
       tagUid = widget.alumno!.tagUid;
     }
@@ -105,7 +105,7 @@ class _AlumnoFormState extends State<AlumnoForm> {
                             onChanged: (value) => foto = value,
                           ),
                           SizedBox(height: 8),
-                          TextFormField(
+                          /* TextFormField(
                             initialValue: enfermedades,
                             decoration: InputDecoration(
                               labelText: "Enfermedades",
@@ -118,7 +118,7 @@ class _AlumnoFormState extends State<AlumnoForm> {
                             ),
                             onChanged: (value) => enfermedades = value,
                           ),
-                          SizedBox(height: 8),
+                          SizedBox(height: 8), */
                           TextFormField(
                             initialValue: tipoSangre,
                             decoration: InputDecoration(
@@ -133,7 +133,7 @@ class _AlumnoFormState extends State<AlumnoForm> {
                             onChanged: (value) => tipoSangre = value,
                           ),
                           SizedBox(height: 8),
-                          TextFormField(
+                          /* TextFormField(
                             initialValue: alergias,
                             decoration: InputDecoration(
                               labelText: "Alergias",
@@ -146,7 +146,7 @@ class _AlumnoFormState extends State<AlumnoForm> {
                             ),
                             onChanged: (value) => alergias = value,
                           ),
-                          SizedBox(height: 8),
+                          SizedBox(height: 8), */
                           TextFormField(
                             initialValue: cuidadosEspeciales,
                             decoration: InputDecoration(
@@ -188,11 +188,11 @@ class _AlumnoFormState extends State<AlumnoForm> {
                             "nombre": nombre,
                             "edad": edad,
                             "foto": foto,
-                            "enfermedades": enfermedades,
+                            //"enfermedades": enfermedades,
                             "tipoSangre": tipoSangre,
-                            "alergias": alergias,
+                            //"alergias": alergias,
                             "cuidadosEspeciales": cuidadosEspeciales,
-                            "tagUid":tagUid,
+                            "tagUid": tagUid,
                           });
                         }
                       },
